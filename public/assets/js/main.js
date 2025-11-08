@@ -15,6 +15,62 @@ window.addEventListener('load', function() {
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
 
+    // ========================================================================
+    // Hero Background Slider
+    // ========================================================================
+    const heroSlider = document.querySelector('.hero-slider');
+
+    if (heroSlider) {
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        let sliderInterval;
+
+        // Function to show a specific slide
+        function showSlide(index) {
+            // Remove active class from all slides and dots
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Add active class to current slide and dot
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+
+            currentSlide = index;
+        }
+
+        // Function to go to next slide
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+
+        // Auto-play slider every 5 seconds
+        function startSlider() {
+            sliderInterval = setInterval(nextSlide, 5000);
+        }
+
+        function stopSlider() {
+            clearInterval(sliderInterval);
+        }
+
+        // Dot navigation click handlers
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                showSlide(index);
+                stopSlider();
+                startSlider(); // Restart auto-play after manual navigation
+            });
+        });
+
+        // Pause on hover (optional)
+        heroSlider.addEventListener('mouseenter', stopSlider);
+        heroSlider.addEventListener('mouseleave', startSlider);
+
+        // Start the slider
+        startSlider();
+    }
+
     // Mobile menu toggle
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const navMenu = document.getElementById('navMenu');
@@ -200,15 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     });
 
-    // Add subtle parallax effect to hero section
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallaxSpeed = 0.5;
-            hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
-        });
-    }
+    // Parallax effect removed - now using background slider instead
 
     // Enhanced button hover effect
     const buttons = document.querySelectorAll('.btn');

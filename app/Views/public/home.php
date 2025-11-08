@@ -1,5 +1,18 @@
-<!-- Hero Section -->
+<!-- Hero Section with Background Slider -->
 <section class="hero">
+    <!-- Background Slider -->
+    <div class="hero-slider">
+        <div class="hero-slide active" style="background-image: url('/uploads/works/sample-1-1.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('/uploads/works/sample-3-1.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('/uploads/works/sample-6-1.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('/uploads/works/sample-8-1.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('/uploads/works/sample-2-1.jpg');"></div>
+    </div>
+
+    <!-- Overlay for text readability -->
+    <div class="hero-overlay"></div>
+
+    <!-- Hero Content -->
     <div class="hero-content">
         <h1><?= SITE_NAME ?></h1>
         <p><?= $data['settings']['tagline'] ?? 'Exquisite Aari Embroidery Work' ?></p>
@@ -7,6 +20,15 @@
             <a href="/gallery" class="btn btn-primary">View Gallery</a>
             <a href="/contact" class="btn btn-outline">Contact Us</a>
         </div>
+    </div>
+
+    <!-- Slider Navigation Dots -->
+    <div class="hero-slider-nav">
+        <button class="slider-dot active" data-slide="0"></button>
+        <button class="slider-dot" data-slide="1"></button>
+        <button class="slider-dot" data-slide="2"></button>
+        <button class="slider-dot" data-slide="3"></button>
+        <button class="slider-dot" data-slide="4"></button>
     </div>
 </section>
 
