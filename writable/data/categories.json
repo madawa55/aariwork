@@ -2,19 +2,37 @@
     {
         "id": 1,
         "name": "Bridal",
-        "color": "#ff6b9d",
+        "color": "#c9ab81",
         "created_at": "2025-11-08 00:00:00"
     },
     {
         "id": 2,
         "name": "Casual",
-        "color": "#4ecdc4",
+        "color": "#6b6b6b",
         "created_at": "2025-11-08 00:00:00"
     },
     {
         "id": 3,
         "name": "Traditional",
-        "color": "#ffe66d",
+        "color": "#1a1a1a",
+        "created_at": "2025-11-08 00:00:00"
+    },
+    {
+        "id": 4,
+        "name": "Party Wear",
+        "color": "#8b7355",
+        "created_at": "2025-11-08 00:00:00"
+    },
+    {
+        "id": 5,
+        "name": "Ethnic",
+        "color": "#a68a6d",
+        "created_at": "2025-11-08 00:00:00"
+    },
+    {
+        "id": 6,
+        "name": "Contemporary",
+        "color": "#4a4a4a",
         "created_at": "2025-11-08 00:00:00"
     }
 ]

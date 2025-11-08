@@ -1,1 +1,50 @@
-[]
+[
+    {
+        "id": 1,
+        "name": "Priya Sharma",
+        "message": "The bridal lehenga I ordered exceeded all my expectations! The intricate aari work was absolutely stunning and the attention to detail was remarkable. I received so many compliments on my wedding day. Highly recommend Yuhaa Aari Work for anyone looking for quality craftsmanship.",
+        "rating": 5,
+        "published": true,
+        "created_at": "2025-10-15 14:30:00"
+    },
+    {
+        "id": 2,
+        "name": "Ananya Reddy",
+        "message": "I've been a customer for over two years now and have never been disappointed. The quality of the embroidery work is consistently excellent. The contemporary designs blend beautifully with traditional techniques. My wardrobe is now full of their beautiful pieces!",
+        "rating": 5,
+        "published": true,
+        "created_at": "2025-10-20 10:15:00"
+    },
+    {
+        "id": 3,
+        "name": "Kavitha Menon",
+        "message": "Absolutely beautiful work! I ordered a custom blouse with peacock motifs and the result was breathtaking. The craftsmanship is top-notch and the team was very accommodating with my specific design requests. Will definitely order again.",
+        "rating": 5,
+        "published": true,
+        "created_at": "2025-10-25 16:45:00"
+    },
+    {
+        "id": 4,
+        "name": "Divya Patel",
+        "message": "The quality and craftsmanship are exceptional. I purchased an ethnic jacket and the embroidery details are simply gorgeous. The piece is versatile and I can wear it with both traditional and modern outfits. Worth every penny!",
+        "rating": 5,
+        "published": true,
+        "created_at": "2025-10-28 09:20:00"
+    },
+    {
+        "id": 5,
+        "name": "Meera Krishnan",
+        "message": "I'm so happy with my minimalist white kurta! The subtle aari work adds such elegance without being too flashy. Perfect for formal occasions. The attention to detail and quality of materials used is evident. Excellent service from start to finish.",
+        "rating": 5,
+        "published": true,
+        "created_at": "2025-11-02 11:30:00"
+    },
+    {
+        "id": 6,
+        "name": "Lakshmi Iyer",
+        "message": "Beautiful traditional work with a modern touch. The saree border I ordered is absolutely perfect. The floral patterns are so delicate and well-executed. I appreciate the blend of traditional techniques with contemporary designs. Highly satisfied!",
+        "rating": 4,
+        "published": true,
+        "created_at": "2025-11-05 15:00:00"
+    }
+]
