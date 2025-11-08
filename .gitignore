@@ -1,0 +1,36 @@
+# Logs
+writable/logs/*
+!writable/logs/.gitkeep
+
+# Cache
+writable/cache/*
+!writable/cache/.gitkeep
+
+# Session
+writable/session/*
+!writable/session/.gitkeep
+
+# Uploads (uncomment if you don't want to commit uploads)
+# public/uploads/*
+# !public/uploads/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
