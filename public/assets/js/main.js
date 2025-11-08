@@ -1,6 +1,16 @@
 /**
- * Main JavaScript for Public Site
+ * Main JavaScript for Public Site - Minimalist Theme
+ * Enhanced with modern animations and micro-interactions
  */
+
+// Page Load Animation
+window.addEventListener('load', function() {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.4s ease-out';
+    setTimeout(function() {
+        document.body.style.opacity = '1';
+    }, 100);
+});
 
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
@@ -133,27 +143,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add animation on scroll
+    // Enhanced animation on scroll with staggered effect
     const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.work-item, .testimonial-item, .gallery-item');
+        const elements = document.querySelectorAll('.work-item, .testimonial-item, .gallery-item, .section-header');
 
         const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+            entries.forEach(function(entry, index) {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '0';
-                    entry.target.style.transform = 'translateY(20px)';
-                    entry.target.style.transition = 'opacity 0.6s, transform 0.6s';
+                    entry.target.style.transform = 'translateY(30px)';
+                    entry.target.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+
+                    // Staggered animation delay
+                    const delay = Array.from(entry.target.parentElement.children).indexOf(entry.target) * 80;
 
                     setTimeout(function() {
                         entry.target.style.opacity = '1';
                         entry.target.style.transform = 'translateY(0)';
-                    }, 100);
+                    }, delay);
 
                     observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.1
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         });
 
         elements.forEach(function(el) {
@@ -162,4 +176,107 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     animateOnScroll();
+
+    // Smooth navbar hide/show on scroll
+    let lastScrollTop = 0;
+    const nav = document.querySelector('.main-nav');
+    let scrollTimeout;
+
+    window.addEventListener('scroll', function() {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                nav.style.transform = 'translateY(-100%)';
+                nav.style.transition = 'transform 0.3s ease-out';
+            } else {
+                // Scrolling up
+                nav.style.transform = 'translateY(0)';
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, 100);
+    });
+
+    // Add subtle parallax effect to hero section
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxSpeed = 0.5;
+            hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+        });
+    }
+
+    // Enhanced button hover effect
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(function(btn) {
+        btn.addEventListener('mouseenter', function(e) {
+            const ripple = document.createElement('span');
+            ripple.style.cssText = `
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+            `;
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.style.transition = 'width 0.6s, height 0.6s';
+
+            setTimeout(function() {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    // Image gallery thumbnail switching
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const mainImage = document.querySelector('.main-image img');
+
+    thumbnails.forEach(function(thumb) {
+        thumb.addEventListener('click', function() {
+            thumbnails.forEach(function(t) {
+                t.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            if (mainImage) {
+                mainImage.style.opacity = '0';
+                mainImage.style.transition = 'opacity 0.3s';
+
+                setTimeout(function() {
+                    mainImage.src = thumb.querySelector('img').src;
+                    mainImage.style.opacity = '1';
+                }, 300);
+            }
+        });
+    });
+
+    // Add loading state to forms
+    const forms = document.querySelectorAll('form');
+    forms.forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+            const submitBtn = this.querySelector('[type="submit"]');
+            if (submitBtn && !this.classList.contains('no-loader')) {
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.6';
+                submitBtn.textContent = 'Sending...';
+            }
+        });
+    });
 });
